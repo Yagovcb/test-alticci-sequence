@@ -1,13 +1,14 @@
-package com.praxis.praxis_users.application.services;
+package br.com.yagovcb.testalticcisequence.application.service;
 
-import com.praxis.praxis_users.domain.model.User;
-import com.praxis.praxis_users.domain.repository.UserRepository;
+import br.com.yagovcb.testalticcisequence.domain.model.User;
+import br.com.yagovcb.testalticcisequence.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Service("UsuarioDetailService")
@@ -26,5 +27,10 @@ public class UserDetailService implements UserDetailsService {
                 true, true, true,
                 usuario.getAuthorities()
         )).orElse(null);
+    }
+
+    public User getUserByUsername(String userName){
+        Optional<User> usuarioOptional = usuarioRepository.findByUsername(userName);
+        return usuarioOptional.orElseThrow(() ->  new EntityNotFoundException("Usuario não encontrado"));
     }
 }

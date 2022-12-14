@@ -1,8 +1,8 @@
-package com.praxis.praxis_users.config.security;
+package br.com.yagovcb.testalticcisequence.config.security;
 
-import com.praxis.praxis_users.application.services.UserDetailService;
-import com.praxis.praxis_users.config.security.jwt.JsonObjectAuthenticationFilter;
-import com.praxis.praxis_users.config.security.jwt.JwtAuthorizationFilter;
+import br.com.yagovcb.testalticcisequence.application.service.UserDetailService;
+import br.com.yagovcb.testalticcisequence.config.security.jwt.JsonObjectAuthenticationFilter;
+import br.com.yagovcb.testalticcisequence.config.security.jwt.JwtAuthorizationFilter;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,11 +43,10 @@ public class SecurityConfiguration {
                 .and()
                 .csrf()
                 .disable()
-                .authorizeHttpRequests((auth) -> {
+                .authorizeHttpRequests(auth -> {
                     try {
                         auth
-                                .antMatchers(HttpMethod.DELETE, "/api/usuario/**").hasRole("ROLE_ADMIN")
-                                .antMatchers(HttpMethod.GET, "/api/usuario/**").permitAll()
+                                .antMatchers(HttpMethod.GET, "/api/alticci/**").permitAll()
                                 .antMatchers("/swagger-ui/**").permitAll()
                                 .anyRequest().authenticated()
                                 .and()

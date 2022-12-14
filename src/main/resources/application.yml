@@ -1,1 +1,28 @@
 
+server:
+  port: 8099
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+
+spring:
+  mvc:
+    path match:
+      matching-strategy: ant_path_matcher
+  application:
+    name: test-alticci-sequence
+
+
+logging:
+  level:
+    web: info
+    sql: info
+    root: info
+    org:
+      springframework:
+        security: DEBUG
+
+jwt:
+  expiration: 3600000
+  secret: secretExemploToken

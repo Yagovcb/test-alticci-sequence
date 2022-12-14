@@ -1,4 +1,4 @@
-package com.praxis.praxis_users.domain.enums;
+package br.com.yagovcb.testalticcisequence.domain.enums;
 
 public enum Role {
 

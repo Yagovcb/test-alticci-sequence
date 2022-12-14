@@ -1,6 +1,6 @@
-package com.praxis.praxis_users.domain.repository;
+package br.com.yagovcb.testalticcisequence.domain.repository;
 
-import com.praxis.praxis_users.domain.model.User;
+import br.com.yagovcb.testalticcisequence.domain.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,9 +12,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByUsername(String username);
 
-    Optional<User> findByUsernameAndEmail(String username, String email);
-
-    boolean existsUserByUsernameAndEmail(String username, String email);
-
-    List<User> findAllByActive(Boolean isEnabled);
 }

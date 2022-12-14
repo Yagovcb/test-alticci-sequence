@@ -1,7 +1,7 @@
-package com.praxis.praxis_users.config.security.jwt;
+package br.com.yagovcb.testalticcisequence.config.security.jwt;
 
+import br.com.yagovcb.testalticcisequence.infrastructure.response.LoginResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.praxis.praxis_users.infrastructure.response.LoginResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;

@@ -1,4 +1,4 @@
-package com.praxis.praxis_users.config.swagger;
+package br.com.yagovcb.testalticcisequence.config.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,9 +17,9 @@ import java.util.List;
 @EnableSwagger2
 public class SwaggerConfiguration {
 
-    private static final String URL = "https://brasil.praxisglobe.com/";
-    private static final String EMAIL = "brasil@praxisglobe.com";
-    private static final String PRAXIS_NAME = "PRAXIS Tecnologia";
+    private static final String URL = "https://www.linkedin.com/in/yagovcb/";
+    private static final String EMAIL = "yago.vcb@gmail.com";
+    private static final String COMPANY_NAME = "Yago Castelo Branco";
 
     @Bean
     public Docket api() {
@@ -28,7 +28,7 @@ public class SwaggerConfiguration {
                 .securityContexts(List.of(securityContext()))
                 .securitySchemes(List.of(apiKey()))
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.praxis.praxis_users.application.controller"))
+                .apis(RequestHandlerSelectors.basePackage("br.com.yagovcb.testalticcisequence.application.controller"))
                 .paths(PathSelectors.any()).build();
     }
 
@@ -49,13 +49,13 @@ public class SwaggerConfiguration {
 
     private ApiInfo informacoesApi() {
         ApiInfoBuilder apiInfoBuilder = new ApiInfoBuilder();
-        apiInfoBuilder.title("USERS - API");
-        apiInfoBuilder.description("API Rest para disponibilziar os serviços de gerenciamento de usuarios");
+        apiInfoBuilder.title("Alticci Sequence Generator API");
+        apiInfoBuilder.description("API Rest para geração da sequencia Alticci");
         apiInfoBuilder.version("1.0");
-        apiInfoBuilder.termsOfServiceUrl("Termos de uso: Todos os direitos reservados - " + PRAXIS_NAME);
-        apiInfoBuilder.license(PRAXIS_NAME);
+        apiInfoBuilder.termsOfServiceUrl("Termos de uso: Todos os direitos reservados - " + COMPANY_NAME);
+        apiInfoBuilder.license(COMPANY_NAME);
         apiInfoBuilder.licenseUrl(URL);
-        apiInfoBuilder.contact(new Contact(PRAXIS_NAME, URL, EMAIL));
+        apiInfoBuilder.contact(new Contact(COMPANY_NAME, URL, EMAIL));
         return apiInfoBuilder.build();
     }
 }

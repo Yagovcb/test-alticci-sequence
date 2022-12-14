@@ -1,8 +1,8 @@
-package com.praxis.praxis_users.config.component;
+package br.com.yagovcb.testalticcisequence.config.component;
 
-import com.praxis.praxis_users.domain.enums.Role;
-import com.praxis.praxis_users.domain.model.User;
-import com.praxis.praxis_users.domain.repository.UserRepository;
+import br.com.yagovcb.testalticcisequence.domain.enums.Role;
+import br.com.yagovcb.testalticcisequence.domain.model.User;
+import br.com.yagovcb.testalticcisequence.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
