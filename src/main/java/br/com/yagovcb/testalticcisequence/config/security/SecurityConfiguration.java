@@ -1,6 +1,7 @@
 package br.com.yagovcb.testalticcisequence.config.security;
 
 import br.com.yagovcb.testalticcisequence.application.service.UserDetailService;
+import br.com.yagovcb.testalticcisequence.config.security.jwt.AuthSucessHandler;
 import br.com.yagovcb.testalticcisequence.config.security.jwt.JsonObjectAuthenticationFilter;
 import br.com.yagovcb.testalticcisequence.config.security.jwt.JwtAuthorizationFilter;
 import lombok.SneakyThrows;
@@ -29,11 +30,15 @@ public class SecurityConfiguration {
     @Autowired
     private AuthenticationManager authenticationManager;
     private final UserDetailService usuarioDetailsService;
+
+    private final AuthSucessHandler authSucessHandler;
+
     private final String secret;
 
-    public SecurityConfiguration(UserDetailService usuarioDetailsService, @Value("${jwt.secret}") String secret){
+    public SecurityConfiguration(AuthSucessHandler authSucessHandler,UserDetailService usuarioDetailsService, @Value("${jwt.secret}") String secret){
         this.secret = secret;
         this.usuarioDetailsService = usuarioDetailsService;
+        this.authSucessHandler = authSucessHandler;
     }
 
     @Bean
@@ -67,6 +72,7 @@ public class SecurityConfiguration {
     @Bean
     public JsonObjectAuthenticationFilter authenticationFilter() {
         JsonObjectAuthenticationFilter filter = new JsonObjectAuthenticationFilter();
+        filter.setAuthenticationSuccessHandler(authSucessHandler);
         filter.setAuthenticationManager(authenticationManager);
         return filter;
     }
