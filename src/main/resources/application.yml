@@ -7,11 +7,20 @@ server:
     mime-types: application/json,application/xml,text/html,text/xml,text/plain
 
 spring:
+  main:
+    allow-circular-references: true
   mvc:
     path match:
       matching-strategy: ant_path_matcher
   application:
     name: test-alticci-sequence
+  datasource:
+    url: jdbc:h2:mem:alticci-ms
+    driver-class-name: org.h2.Driver
+    username: admin
+    passorwd: root123
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
 
 
 logging:
