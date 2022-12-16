@@ -1,6 +1,5 @@
 package br.com.yagovcb.testalticcisequence.application.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import br.com.yagovcb.testalticcisequence.TestAlticciSequenceApplication;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;

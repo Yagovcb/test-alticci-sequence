@@ -10,7 +10,7 @@ public class AlticciSequenceMock {
 
     public static AlticciResponseDTO alticciResponseDTO(){
         return AlticciResponseDTO.builder()
-                .strProcessingTime(TimerUtils.timeBreakFormat())
+                .processingTime(TimerUtils.timeBreakFormat())
                 .result(BigInteger.valueOf(3))
                 .build();
     }

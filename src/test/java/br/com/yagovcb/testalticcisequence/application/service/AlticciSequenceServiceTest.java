@@ -22,7 +22,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -85,7 +84,7 @@ class AlticciSequenceServiceTest {
         assertTrue(actualCheckSequenceCacheResult.hasBody());
         assertEquals(1, actualCheckSequenceCacheResult.getHeaders().size());
         assertEquals(HttpStatus.OK, actualCheckSequenceCacheResult.getStatusCode());
-        assertEquals("Check Cache Str", Objects.requireNonNull(actualCheckSequenceCacheResult.getBody()).getStrCache());
+        assertEquals("Check Cache Str", Objects.requireNonNull(actualCheckSequenceCacheResult.getBody()).getCache());
         verify(cacheMemorizationManager).checkCacheStr();
     }
 
@@ -101,7 +100,7 @@ class AlticciSequenceServiceTest {
         assertTrue(actualDeleteSequenceCacheResult.hasBody());
         assertEquals(1, actualDeleteSequenceCacheResult.getHeaders().size());
         assertEquals(HttpStatus.OK, actualDeleteSequenceCacheResult.getStatusCode());
-        assertEquals("Clear Cache", Objects.requireNonNull(actualDeleteSequenceCacheResult.getBody()).getStrCache());
+        assertEquals("Clear Cache", Objects.requireNonNull(actualDeleteSequenceCacheResult.getBody()).getCache());
         verify(cacheMemorizationManager).clearCache();
     }
 

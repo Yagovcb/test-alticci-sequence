@@ -29,7 +29,8 @@ public class SwaggerConfiguration {
                 .securitySchemes(List.of(apiKey()))
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("br.com.yagovcb.testalticcisequence.application.controller"))
-                .paths(PathSelectors.any()).build();
+                .paths(PathSelectors.any())
+                .build();
     }
 
     private ApiKey apiKey(){
