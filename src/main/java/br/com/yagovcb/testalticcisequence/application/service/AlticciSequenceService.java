@@ -83,7 +83,11 @@ public class AlticciSequenceService {
         countMemorizedCacheCalls ++;
         BigInteger seqNumber = cacheMemorizationManager.get(number);
         if(seqNumber == null) {
-            seqNumber = calculateWithMemoization(number - 3).add(calculateWithMemoization(number - 2));
+            if (number < 3 || number < 2){
+                seqNumber = BigInteger.valueOf(0);
+            } else {
+                seqNumber = calculateWithMemoization(number - 3).add(calculateWithMemoization(number - 2));
+            }
             cacheMemorizationManager.save(number, seqNumber);
         }
         return seqNumber;

@@ -1,5 +1,6 @@
 package br.com.yagovcb.testalticcisequence.config.component;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
+@Profile("!test")
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsConfiguration extends OncePerRequestFilter {
 

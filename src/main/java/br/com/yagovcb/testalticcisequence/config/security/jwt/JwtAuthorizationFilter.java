@@ -3,6 +3,7 @@ package br.com.yagovcb.testalticcisequence.config.security.jwt;
 import br.com.yagovcb.testalticcisequence.application.service.UserDetailService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Profile("!test")
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     private static final String TOKEN_PREFIX = "Bearer ";
@@ -49,8 +51,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             response.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept");
             response.setHeader("Access-Control-Max-Age", "3600");
             response.setStatus(HttpServletResponse.SC_OK);
-        } else {
-            filterChain.doFilter(request, response);
         }
 
         filterChain.doFilter(request, response);

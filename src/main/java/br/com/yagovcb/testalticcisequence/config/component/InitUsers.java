@@ -5,6 +5,7 @@ import br.com.yagovcb.testalticcisequence.domain.model.User;
 import br.com.yagovcb.testalticcisequence.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @Component
+@Profile("!test")
 @RequiredArgsConstructor
 public class InitUsers implements CommandLineRunner {
 
