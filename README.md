@@ -12,13 +12,13 @@
 
 <br>
 <h1 align="center">
-Calculadora Alticci Sequence (Backend)
+Calculator Alticci Sequence (Backend)
 </h1>
 <br>
 
-## 💬 Sobre o repositório
+## 💬 About the repository
 
-A Calculadora Alticci Sequence calcula um valor da sequência Alticci com base em um índice passado, na qual é definida da seguinte forma:
+The Alticci Sequence Calculator calculates an Alticci sequence value based on a passed index, which is defined as follows:
 
 n=0 => a(0) = 0
 
@@ -28,52 +28,67 @@ n=2 => a(2) = 1
 
 n>2 => a(n) = a(n-3) + a(n-2)
 
-O serviço principal tira partido de cálculos passados para acelerar cálculos futuros por meio do caching (utilizando memoização). Além do serviço principal, há também um serviço pelo Spring Cache, para demonstrar a diferença de performance quando não é utilizada a memoização.
+The core service takes advantage of past calculations to speed up future calculations through caching (using memoization). In addition to the main service, there is also a service by Spring Cache, to demonstrate the performance difference when memoization is not used.
 
-## ⚠ Pré-requisitos para execução do projeto
+## ⚠ Pre Requirements for project execution
 
-* Java 11 ou versões superiores
+* Java 11 or higher versions
 * Maven
 
-## 📌 Como utilizar?
+## 📌 How to user?
 
-Para utilizar a Calculadora Alticci Sequence em produção, basta acessá-lo diretamente no seu navegador. [Clique aqui!](https://wienerdev.github.io/alticci-sequence-angular/)
-
-Para executar o projeto, digite o seguinte comando no diretório raiz:
+To run the project, enter the following command in the root directory:
 
 ```
 mvn spring-boot:run 
 ```
 
-Após o build da aplicação, acesse o [Swagger](http://localhost:8099/swagger-ui/index.html#/) para testar os endpoints.
+After building the application, access the [Swagger](http://localhost:8099/swagger-ui/index.html#/) to test the endpoints.
 
-## 📲 Serviços disponíveis para testes
+## ⚠ Super Important
 
-### Alticci Sequence Number com Memoization
+This API has an updated Spring Security configuration and is ready to be coupled with the front-end. The authentication methodology is through Barear tokens with JWT encoding.
+
+To simplify the process, we are using an H2 database in memory with a previously registered user, this user's information is located in the components folder, in the config folder.
+
+To generate a JWT token, direct the request with username and password, in JSON format, to the following endpoint:
+
+```
+POST http://localhost:8099/login
+```
+
+That said, we can proceed!
+
+## 📲 Services available for testing
+
+### Alticci Sequence Number with Memoization
 ```
 Method: GET
 URL: http://localhost:8099/alticci/memoizationCache/{n}
-{n}: índice a ser passado.
+{n}: index to be passed.
 ```
 
-### Checar Cache Memoizado
+### Check Memoized Cache
 ```
 Method: GET
 URL: http://localhost:8099/alticci/checkMemoCache
 ```
 
-### Limpar Cache Memoizado
+### Clear Memoized Cache
 ```
 Method: PUT
 URL: http://localhost:8099/alticci/clearMemoCache
 ```
 
-### Alticci Sequence Number com Spring Cache
+### Alticci Sequence Number with Spring Cache
 ```
 Method: GET
 URL: http://localhost:8099/alticci/springCache/{n}
 {n}: índice a ser passado.
 ```
+##
+
+Thanks for testing my API!
 
 ##
 <h4><b><samp>Connect with me:</samp></b></h4>

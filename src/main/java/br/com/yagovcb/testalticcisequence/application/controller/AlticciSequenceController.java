@@ -31,46 +31,46 @@ public class AlticciSequenceController {
 
     @Cacheable("no-seq-memoization")
     @GetMapping(value = "/springCache/{n}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation(value = "Retorna o numero da sequencia Alticci", response = AlticciResponseDTO.class, httpMethod = "GET")
+    @ApiOperation(value = "Returns the Alticci sequence number", response = AlticciResponseDTO.class, httpMethod = "GET")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Retorna o numero da sequencia em caso de sucesso", response = AlticciResponseDTO.class),
-            @ApiResponse(code = 400, message = "Retorna erro caso o numero não igual ao esperado", response = NumberFormatException.class)
+            @ApiResponse(code = 200, message = "Returns the sequence number on success", response = AlticciResponseDTO.class),
+            @ApiResponse(code = 400, message = "Returns error if the number is not equal to the expected one", response = NumberFormatException.class)
     })
     public ResponseEntity<AlticciResponseDTO> returnAlticciSequenceValue(@PathVariable("n") Long number) {
-        log.info("AlticciSequenceController :: Iniciando a busca pelo indice correto da sequencia...");
+        log.info("AlticciSequenceController :: Starting the search for the correct index of the sequence...");
         return alticciSequenceService.calculateAlticciSequenceIndex(number);
     }
 
     @Cacheable("seq-memoization")
     @GetMapping(value = "/memoizationCache/{n}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation(value = "Retorna o numero da sequencia Alticci com memorização", response = AlticciResponseDTO.class, httpMethod = "GET")
+    @ApiOperation(value = "Returns the Alticci sequence number with memorization", response = AlticciResponseDTO.class, httpMethod = "GET")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Retorna o numero da sequencia em cache, em caso de sucesso", response = AlticciResponseDTO.class),
-            @ApiResponse(code = 400, message = "Retorna erro caso o numero não igual ao esperado", response = NumberFormatException.class)
+            @ApiResponse(code = 200, message = "Returns the sequence number in the cache, in case of success", response = AlticciResponseDTO.class),
+            @ApiResponse(code = 400, message = "Returns error if the number is not equal to the expected one", response = NumberFormatException.class)
 
     })
     public ResponseEntity<AlticciResponseDTO> returnAlticciSequenceValueMemoized(@PathVariable("n") Long number) {
-        log.info("AlticciSequenceController :: Iniciando a busca pelo indice correto da sequencia, considerando memorização...");
+        log.info("AlticciSequenceController :: Starting the search for the correct index of the sequence, considering memorization...");
         return alticciSequenceService.calculateAlticciSequenceIndexMemoization(number);
     }
 
     @GetMapping(value = "/checkMemoCache", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation(value = "Recupera a lista de indices em cache", response = CacheResponseDTO.class, httpMethod = "GET")
+    @ApiOperation(value = "Retrieve the list of cached indexes", response = CacheResponseDTO.class, httpMethod = "GET")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Retorna a lista de indices de cache", response = CacheResponseDTO.class)
+            @ApiResponse(code = 200, message = "Retrieve the list of indexes that have been cached so far", response = CacheResponseDTO.class)
     })
     public ResponseEntity<CacheResponseDTO> checkMemoCache() {
-        log.info("AlticciSequenceController :: Iniciando a busca pela lista de indices que foram salvos em cache até o momento...");
+        log.info("AlticciSequenceController :: Starting the search for the list of indexes that have been cached so far...");
         return alticciSequenceService.checkSequenceCache();
     }
 
     @PutMapping(value = "/clearMemoCache", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation(value = "Limpa a lista de cache", response = CacheResponseDTO.class, httpMethod = "PUT")
+    @ApiOperation(value = "Clear cache list", response = CacheResponseDTO.class, httpMethod = "PUT")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Retorna uma mensage se a operação for bem sucedida", response = CacheResponseDTO.class)
+            @ApiResponse(code = 200, message = "Returns a message if the operation is successful", response = CacheResponseDTO.class)
     })
     public ResponseEntity<CacheResponseDTO> clearCache() {
-        log.info("AlticciSequenceController :: Limpando a lista de indices que foram salvos em cache até o momento...");
+        log.info("AlticciSequenceController :: Clearing the list of indices that have been cached so far...");
         return alticciSequenceService.deleteSequenceCache();
     }
 }

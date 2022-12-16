@@ -37,7 +37,7 @@ public class AlticciSequenceService {
     }
 
     public ResponseEntity<AlticciResponseDTO> calculateAlticciSequenceIndexMemoization(Long number) {
-        log.info("AlticciSequenceService ::Starting the Alticci sequence calculation process with memorization");
+        log.info("AlticciSequenceService :: Starting the Alticci sequence calculation process with memorization");
         validateNumber(number);
 
         BigInteger memoResult = calculateWithMemoization(number);
